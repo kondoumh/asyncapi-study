@@ -1,0 +1,50 @@
+asyncapi: 2.6.0
+info:
+  title: kafka-consumer-example
+  version: 0.1.0
+  description: kafka-consumer-example
+defaultContentType: application/json
+servers:
+  kafka:
+    url: localhost:9092
+    protocol: kafka
+channels:
+  example-topic-01:
+    publish:
+      operationId: example-topic-01_publish_listen
+      description: Auto-generated description
+      bindings:
+        kafka:
+          bindingVersion: 0.4.0
+      message:
+        schemaFormat: application/vnd.oai.openapi+json;version=3.0.0
+        name: com.kondoumh.kafkaconsumerexample.ExampleEvent
+        title: ExampleEvent
+        payload:
+          $ref: '#/components/schemas/ExampleEvent'
+        headers:
+          $ref: '#/components/schemas/HeadersNotDocumented'
+        bindings:
+          kafka:
+            bindingVersion: 0.4.0
+    bindings:
+      kafka:
+        bindingVersion: 0.4.0
+components:
+  schemas:
+    ExampleEvent:
+      type: object
+      properties:
+        event_id:
+          type: integer
+          format: int64
+        event_name:
+          type: string
+      example:
+        event_id: 0
+        event_name: string
+    HeadersNotDocumented:
+      type: object
+      properties: {}
+      example: {}
+tags: []
